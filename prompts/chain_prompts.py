@@ -16,10 +16,9 @@ output_length=st.selectbox("Select the length of the output",["Short(1-2 paragra
 
 if st.button("Summarize"):
     chain = template | model
-    prompt=template.invoke({
+    result=chain.invoke({
     'paper_input':input_paper,
     'explain_style':style_input,
     'length':output_length
     })
-    result = model.invoke(prompt)
     st.write(result.content)
